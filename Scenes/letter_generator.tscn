@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwyxh783wyjo7"]
+
+[ext_resource type="Script" uid="uid://bydoe3sh0s6of" path="res://Scripts/label.gd" id="1_opmq3"]
+
+[node name="LetterGenerator" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("1_opmq3")
