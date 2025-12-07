@@ -15,7 +15,10 @@ func _ready() -> void:
 		#Gets the data from the json
 		var data = json.data
 		#[Main dictonary][array],then [Index]
-		label.text = data["hiragana_chart"]["basic_gojuon"][randi_range(0,46)]["hiragana"]
+		var basic_index = data["hiragana_chart"]["basic_gojuon"][randi_range(0,46)]
+		var hiragana = basic_index["hiragana"]
+		var romaji = basic_index["romaji"]
+		label.text = hiragana
 	else:
 		print("JSON Parse Error", json.get_error_message())
 	

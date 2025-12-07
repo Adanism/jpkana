@@ -1,3 +1,10 @@
-[gd_scene format=3 uid="uid://c6kq7uqa3syty"]
+[gd_scene load_steps=3 format=3 uid="uid://c6kq7uqa3syty"]
+
+[ext_resource type="PackedScene" uid="uid://baw4h06j0o5t8" path="res://typing_manager.tscn" id="1_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://bwyxh783wyjo7" path="res://Scenes/letter_generator.tscn" id="2_8gbba"]
 
 [node name="Main" type="Node2D"]
+
+[node name="Typing_Manager" parent="." instance=ExtResource("1_bo1nx")]
+
+[node name="LetterGenerator" parent="." instance=ExtResource("2_8gbba")]
