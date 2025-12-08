@@ -1,12 +1,48 @@
 [gd_scene load_steps=3 format=3 uid="uid://c6kq7uqa3syty"]
 
-[ext_resource type="PackedScene" uid="uid://baw4h06j0o5t8" path="res://typing_manager.tscn" id="1_bo1nx"]
-[ext_resource type="PackedScene" uid="uid://bwyxh783wyjo7" path="res://Scenes/letter_generator.tscn" id="2_8gbba"]
+[ext_resource type="PackedScene" uid="uid://baw4h06j0o5t8" path="res://Scenes/typing_manager.tscn" id="1_bo1nx"]
+[ext_resource type="Script" uid="uid://dwtby8csr3w2i" path="res://Scripts/manager.gd" id="3_8gbba"]
 
 [node name="Main" type="Node2D"]
 
-[node name="Typing_Manager" parent="." instance=ExtResource("1_bo1nx")]
-position = Vector2(498, 178)
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -2
 
-[node name="LetterGenerator" parent="." instance=ExtResource("2_8gbba")]
-position = Vector2(531, 96)
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+z_index = 113
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.65882355, 0.99607843, 0.6509804, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Manager" type="Node2D" parent="."]
+script = ExtResource("3_8gbba")
+
+[node name="Typing_Manager" parent="." instance=ExtResource("1_bo1nx")]
+position = Vector2(-3, -3)
+
+[node name="TextEdit" parent="Typing_Manager" index="0"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 500.0
+offset_top = 571.0
+offset_right = 597.0
+offset_bottom = 632.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Send" parent="Typing_Manager" index="1"]
+offset_left = 605.0
+offset_top = 569.0
+offset_right = 656.0
+offset_bottom = 600.0
+
+[connection signal="text_sent" from="Typing_Manager" to="Manager" method="_on_typing_manager_text_sent"]
+
+[editable path="Typing_Manager"]

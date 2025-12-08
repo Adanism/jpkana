@@ -1,10 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://bwyxh783wyjo7"]
+[gd_scene load_steps=4 format=3 uid="uid://bwyxh783wyjo7"]
 
-[ext_resource type="Script" uid="uid://bydoe3sh0s6of" path="res://Scripts/label.gd" id="1_opmq3"]
+[ext_resource type="Script" uid="uid://jxrsj2isk6mc" path="res://Scripts/letter_generator.gd" id="1_801fk"]
+[ext_resource type="FontFile" uid="uid://cahxemvmnqp5t" path="res://Assets/Fonts/NotoSansJP-Black.ttf" id="1_aae6h"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_opmq3"]
+font = ExtResource("1_aae6h")
+font_size = 48
+font_color = Color(0.7907972, 0.16537622, 0.2100114, 1)
 
 [node name="LetterGenerator" type="Node2D"]
+script = ExtResource("1_801fk")
 
 [node name="Label" type="Label" parent="."]
-offset_right = 40.0
+offset_right = 20.0
 offset_bottom = 23.0
-script = ExtResource("1_opmq3")
+label_settings = SubResource("LabelSettings_opmq3")

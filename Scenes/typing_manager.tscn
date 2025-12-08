@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://baw4h06j0o5t8"]
+
+[ext_resource type="Script" uid="uid://ydeivrptjuid" path="res://Scripts/typing_manager.gd" id="1_yo85v"]
+
+[node name="Typing_Manager" type="Node2D"]
+script = ExtResource("1_yo85v")
+
+[node name="TextEdit" type="TextEdit" parent="."]
+offset_right = 97.0
+offset_bottom = 61.0
+deselect_on_focus_loss_enabled = false
+caret_multiple = false
+
+[node name="Send" type="Button" parent="."]
+offset_left = 103.0
+offset_top = 3.0
+offset_right = 179.0
+offset_bottom = 55.0
+text = "SEND"
+
+[connection signal="button_down" from="Send" to="." method="_on_send_button_down"]
