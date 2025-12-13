@@ -1,10 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ca7g5c2lh3tbu"]
+[gd_scene load_steps=3 format=3 uid="uid://ca7g5c2lh3tbu"]
 
 [ext_resource type="Script" uid="uid://4f51nl2rye3q" path="res://Scripts/kill.gd" id="1_it5pd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mdyau"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_o3570"]
+size = Vector2(41.515835, 20)
 
 [node name="Kill" type="Node2D"]
 script = ExtResource("1_it5pd")
@@ -13,7 +12,3 @@ script = ExtResource("1_it5pd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_mdyau")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(20, 20)
-texture = SubResource("PlaceholderTexture2D_o3570")

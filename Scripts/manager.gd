@@ -1,8 +1,11 @@
 extends Node2D
-
+@onready var score: Label = $"../Score"
 var scene = preload("res://Scenes/letter_generator.tscn")
 var letter_generator_instance = null
 var LG_Romaji: String
+var correct_counter:int = 0
+var check_value:int = 5
+var scoring = 0
 @onready var typing_manager: Node2D = $"../Typing_Manager"
 @onready var viewportx = get_viewport().size.x
 @onready var viewport_middle_x = viewportx/2
@@ -25,12 +28,24 @@ func _load_next_character() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	letter_generator_instance.position.y += 3
+	var speed:int = 3
+	#Code For Difficulty
+	if correct_counter*5 == check_value:
+		speed += 2
+	letter_generator_instance.position.y += speed
+	
+	
 
 # Called when the Typing Manager sends a message
 func _on_typing_manager_text_sent(message: String) -> void:
 	if message == LG_Romaji:
 		print("horray - Correct!")
+		scoring += 100
+		score.text = "Score: " + str(scoring)
+		correct_counter += 1
+		if correct_counter == check_value:
+			check_value += 5
+		
 		# Success: Load the next character
 		letter_generator_instance.position.y = 0
 		_load_next_character()

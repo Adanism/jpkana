@@ -7,7 +7,16 @@ var message = "ghello"
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	text_edit.grab_focus()
-	
+	var viewportx = get_viewport().size.x
+	var viewporty = get_viewport().size.y
+	position.x = viewportx*.536
+	position.y = viewporty 
+	var typing_sizex = text_edit.size.x
+	text_edit.size.x = typing_sizex*0.92
+	var typing_sizey = text_edit.size.y
+	text_edit.size.y = typing_sizey*0.92
+	print(position.x)
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

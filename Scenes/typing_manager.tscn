@@ -1,23 +1,30 @@
-[gd_scene load_steps=2 format=3 uid="uid://baw4h06j0o5t8"]
+[gd_scene load_steps=3 format=3 uid="uid://baw4h06j0o5t8"]
 
 [ext_resource type="Script" uid="uid://ydeivrptjuid" path="res://Scripts/typing_manager.gd" id="1_yo85v"]
+[ext_resource type="FontFile" uid="uid://cahxemvmnqp5t" path="res://Assets/Fonts/NotoSansJP-Black.ttf" id="2_josis"]
 
 [node name="Typing_Manager" type="Node2D"]
 script = ExtResource("1_yo85v")
 
 [node name="TextEdit" type="TextEdit" parent="."]
-offset_left = -50.0
-offset_top = -34.0
-offset_right = 47.0
-offset_bottom = 27.0
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+theme_override_colors/search_result_color = Color(0.9490196, 0.9098039, 0.8117647, 1)
+theme_override_colors/search_result_border_color = Color(0.9490196, 0.9098039, 0.8117647, 1)
+theme_override_colors/caret_color = Color(0.9490196, 0.9098039, 0.8117647, 1)
+theme_override_colors/caret_background_color = Color(0.9490196, 0.9098039, 0.8117647, 1)
+theme_override_colors/font_selected_color = Color(0.7372549, 0.2784314, 0.28627452, 1)
+theme_override_colors/selection_color = Color(0.7372549, 0.2784314, 0.28627452, 1)
+theme_override_colors/font_color = Color(0.7372549, 0.2784314, 0.28627452, 1)
+theme_override_colors/font_readonly_color = Color(0.7372549, 0.2784314, 0.28627452, 1)
+theme_override_colors/font_placeholder_color = Color(0.7372549, 0.2784314, 0.28627452, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/background_color = Color(0.9490196, 0.9098039, 0.8117647, 1)
+theme_override_colors/current_line_color = Color(0.25, 0.25, 0.26, 0.8)
+theme_override_colors/word_highlighted_color = Color(0.5, 0.5, 0.5, 0.25)
+theme_override_fonts/font = ExtResource("2_josis")
+theme_override_font_sizes/font_size = 64
 deselect_on_focus_loss_enabled = false
 caret_multiple = false
-
-[node name="Send" type="Button" parent="."]
-offset_left = 54.0
-offset_top = -31.0
-offset_right = 130.0
-offset_bottom = 21.0
-text = "SEND"
-
-[connection signal="button_down" from="Send" to="." method="_on_send_button_down"]

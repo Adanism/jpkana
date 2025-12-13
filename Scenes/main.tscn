@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c6kq7uqa3syty"]
+[gd_scene load_steps=6 format=3 uid="uid://c6kq7uqa3syty"]
 
 [ext_resource type="PackedScene" uid="uid://baw4h06j0o5t8" path="res://Scenes/typing_manager.tscn" id="1_bo1nx"]
 [ext_resource type="Script" uid="uid://dwtby8csr3w2i" path="res://Scripts/manager.gd" id="3_8gbba"]
 [ext_resource type="PackedScene" uid="uid://cxw7bq3gcbeq" path="res://Scenes/player.tscn" id="3_jjvhh"]
 [ext_resource type="PackedScene" uid="uid://ca7g5c2lh3tbu" path="res://Scenes/kill.tscn" id="4_kry3j"]
+[ext_resource type="FontFile" uid="uid://cahxemvmnqp5t" path="res://Assets/Fonts/NotoSansJP-Black.ttf" id="5_21xkr"]
 
 [node name="Main" type="Node2D"]
 
@@ -15,37 +16,82 @@ z_index = 113
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 2.0
+offset_right = 2.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+color = Color(0.41568628, 0.6, 0.30588236, 1)
 metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer"]
+z_index = 113
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -206.0
+grow_horizontal = 0
+grow_vertical = 2
+color = Color(0.7372549, 0.2784314, 0.28627452, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="CanvasLayer"]
+z_index = 113
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 210.0
+grow_vertical = 2
+color = Color(0.7372549, 0.2784314, 0.28627452, 1)
 
 [node name="Manager" type="Node2D" parent="."]
 script = ExtResource("3_8gbba")
 
 [node name="Typing_Manager" parent="." instance=ExtResource("1_bo1nx")]
-position = Vector2(543, 597)
+position = Vector2(580, 616)
 
 [node name="TextEdit" parent="Typing_Manager" index="0"]
-offset_left = -72.0
-offset_top = -27.0
-offset_right = 25.0
-offset_bottom = 34.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Send" parent="Typing_Manager" index="1"]
-offset_left = 26.0
-offset_top = 0.0
-offset_right = 77.0
-offset_bottom = 31.0
-metadata/_edit_use_anchors_ = true
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -376.0
+offset_top = -84.0
+offset_right = 360.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 0
+wrap_mode = 1
+indent_wrapped_lines = true
 
 [node name="Player" parent="." instance=ExtResource("3_jjvhh")]
-position = Vector2(569, 597)
 
 [node name="Kill" parent="." instance=ExtResource("4_kry3j")]
-position = Vector2(543, 559)
+position = Vector2(579, 567)
 scale = Vector2(17.68, 1)
+
+[node name="Area2D" parent="Kill" index="0"]
+position = Vector2(-0.05656454, 0)
+
+[node name="CollisionShape2D" parent="Kill/Area2D" index="0"]
+position = Vector2(4.7683716e-07, 0)
+
+[node name="Lives" type="Label" parent="."]
+offset_left = 2.0000076
+offset_top = 0.99999994
+offset_right = 92.00001
+offset_bottom = 54.0
+scale = Vector2(0.9961885, 1)
+theme_override_fonts/font = ExtResource("5_21xkr")
+theme_override_font_sizes/font_size = 28
+text = "LIVES:"
+
+[node name="Score" type="Label" parent="."]
+offset_left = 1.9999999
+offset_top = 50.0
+offset_right = 92.0
+offset_bottom = 103.0
+scale = Vector2(0.9961885, 1)
+theme_override_fonts/font = ExtResource("5_21xkr")
+theme_override_font_sizes/font_size = 28
+text = "SCORE:"
 
 [connection signal="text_sent" from="Typing_Manager" to="Manager" method="_on_typing_manager_text_sent"]
 [connection signal="area_entered" from="Kill/Area2D" to="Manager" method="_on_area_2d_area_entered"]
