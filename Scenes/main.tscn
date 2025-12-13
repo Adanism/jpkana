@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://c6kq7uqa3syty"]
+[gd_scene load_steps=5 format=3 uid="uid://c6kq7uqa3syty"]
 
 [ext_resource type="PackedScene" uid="uid://baw4h06j0o5t8" path="res://Scenes/typing_manager.tscn" id="1_bo1nx"]
 [ext_resource type="Script" uid="uid://dwtby8csr3w2i" path="res://Scripts/manager.gd" id="3_8gbba"]
+[ext_resource type="PackedScene" uid="uid://cxw7bq3gcbeq" path="res://Scenes/player.tscn" id="3_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://ca7g5c2lh3tbu" path="res://Scenes/kill.tscn" id="4_kry3j"]
 
 [node name="Main" type="Node2D"]
 
@@ -15,34 +17,40 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.65882355, 0.99607843, 0.6509804, 1)
+color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="Manager" type="Node2D" parent="."]
 script = ExtResource("3_8gbba")
 
 [node name="Typing_Manager" parent="." instance=ExtResource("1_bo1nx")]
-position = Vector2(-3, -3)
+position = Vector2(543, 597)
 
 [node name="TextEdit" parent="Typing_Manager" index="0"]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 500.0
-offset_top = 571.0
-offset_right = 597.0
-offset_bottom = 632.0
-grow_horizontal = 2
-grow_vertical = 0
+offset_left = -72.0
+offset_top = -27.0
+offset_right = 25.0
+offset_bottom = 34.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Send" parent="Typing_Manager" index="1"]
-offset_left = 605.0
-offset_top = 569.0
-offset_right = 656.0
-offset_bottom = 600.0
+offset_left = 26.0
+offset_top = 0.0
+offset_right = 77.0
+offset_bottom = 31.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Player" parent="." instance=ExtResource("3_jjvhh")]
+position = Vector2(569, 597)
+
+[node name="Kill" parent="." instance=ExtResource("4_kry3j")]
+position = Vector2(543, 559)
+scale = Vector2(17.68, 1)
 
 [connection signal="text_sent" from="Typing_Manager" to="Manager" method="_on_typing_manager_text_sent"]
+[connection signal="area_entered" from="Kill/Area2D" to="Manager" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Kill/Area2D" to="Player" method="_on_area_2d_area_entered"]
 
 [editable path="Typing_Manager"]
+[editable path="Player"]
+[editable path="Kill"]

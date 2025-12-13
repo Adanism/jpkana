@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bwyxh783wyjo7"]
+[gd_scene load_steps=5 format=3 uid="uid://bwyxh783wyjo7"]
 
 [ext_resource type="Script" uid="uid://jxrsj2isk6mc" path="res://Scripts/letter_generator.gd" id="1_801fk"]
 [ext_resource type="FontFile" uid="uid://cahxemvmnqp5t" path="res://Assets/Fonts/NotoSansJP-Black.ttf" id="1_aae6h"]
@@ -8,6 +8,8 @@ font = ExtResource("1_aae6h")
 font_size = 48
 font_color = Color(0.7907972, 0.16537622, 0.2100114, 1)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_aae6h"]
+
 [node name="LetterGenerator" type="Node2D"]
 script = ExtResource("1_801fk")
 
@@ -15,3 +17,8 @@ script = ExtResource("1_801fk")
 offset_right = 20.0
 offset_bottom = 23.0
 label_settings = SubResource("LabelSettings_opmq3")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_aae6h")
