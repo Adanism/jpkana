@@ -41,7 +41,7 @@ func _on_typing_manager_text_sent(message: String) -> void:
 	if message == LG_Romaji:
 		print("horray - Correct!")
 		scoring += 100
-		score.text = "Score: " + str(scoring)
+		score.text = "Score: "+ str(scoring)
 		correct_counter += 1
 		if correct_counter == check_value:
 			check_value += 5
