@@ -26,10 +26,19 @@ func _load_next_character() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var speed:int = 1
-	if scoring >= 1000:
-		speed += 1
-	#Code For Difficulty
+	var speed:int = 3
+	var bonus: int = scoring / 1000
+	
+	if bonus == 1:
+		speed += bonus
+	if bonus == 2:
+		speed += bonus
+	if bonus == 3:
+		speed += bonus
+	if bonus == 4:
+		speed += bonus
+	if bonus == 5:
+		speed += bonus
 	letter_generator_instance.position.y += speed
 		
 	
@@ -37,7 +46,7 @@ func _process(delta: float) -> void:
 
 # Called when the Typing Manager sends a message
 func _on_typing_manager_text_sent(message: String) -> void:
-	if message == LG_Romaji:
+	if message.to_lower() == LG_Romaji:
 		print("horray - Correct!")
 		scoring += 100
 		score.text = "Score: "+ str(scoring)
